@@ -18,4 +18,4 @@ echo "Invalid" > /tmp/sample_files/2017/1234-1029384756
 ```
 
 ### REST API Dokumentation
-Genereret REST API dokumentation kan findes [her](http://htmlpreview.github.io/?index.html)
+Genereret REST API dokumentation kan findes [her](http://htmlpreview.github.io/?https://github.com/skat/geni-reference-groovy/blob/test-med-rest-docs/index.html)
