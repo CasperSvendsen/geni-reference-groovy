@@ -20,4 +20,4 @@ echo "Invalid" > /tmp/sample_files/2017/1234-1029384756
 REST API Dokumentation
 ======================
 
-Genereret [REST API dokumentation](http://htmlpreview.github.io/?https://github.com/skat/geni-reference-groovy/blob/test-med-rest-docs/index.html)
+Genereret [REST API dokumentation](http://htmlpreview.github.io/?https://github.com/skat/geni-reference-groovy/blob/test-med-rest-docs/apidocs/index.html)
