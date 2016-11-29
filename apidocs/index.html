@@ -452,6 +452,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_foretag_masseindlevering">Foretag masseindlevering</a>
 <ul class="sectlevel2">
 <li><a href="#_aktivering_af_masseindlevering">Aktivering af masseindlevering</a></li>
+<li><a href="#_status_på_masseindlevering">Status på masseindlevering</a></li>
 </ul>
 </li>
 </ul>
@@ -606,61 +607,65 @@ kontoid, periode og pligtigs SE-nummer.</p>
 <h5 id="_curl"><a class="link" href="#_curl">curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.geni.skat.dk/udl%C3%A5n/pligtige/61126228/perioder/2017/konti/1234/indleveringer' -i -X POST -H 'Content-Type: application/xml;charset=UTF-8' -d '&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;RenteIndberetningUdlånStruktur xmlns="https://api.geni.skat.dk/begrebsmodel/2012/01/01/"
-                                xmlns:xsi="https://api.geni.skat.dk/2001/XMLSchema-instance"
-                                xsi:schemaLocation="https://api.geni.skat.dk/begrebsmodel/2012/01/01/ file:/Users/johnsen/git/skat/rente/src/main/resources/xsd/rente_schemas/xml/skat2012/view/RenteIndberetningUdlaanStrukturType.xsd"&gt;
-    &lt;Indkomstperiode&gt;
-        &lt;IndkomstÅr&gt;2017&lt;/IndkomstÅr&gt;
-    &lt;/Indkomstperiode&gt;
-    &lt;Indberetningspligtig&gt;
-        &lt;VirksomhedSENummer&gt;61126228&lt;/VirksomhedSENummer&gt;
-    &lt;/Indberetningspligtig&gt;
-    &lt;KontoID&gt;1234&lt;/KontoID&gt;
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.geni.skat.dk/udl%C3%A5n/pligtige/61126228/perioder/2017/konti/1234/indleveringer' -i -X POST -H 'Content-Type: application/xml;charset=UTF-8' -d '&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;RenteIndberetningUdlånStruktur xmlns="https://api.geni.skat.dk/begrebsmodel/2012/01/01/" xmlns:xsi="https://api.geni.skat.dk/2001/XMLSchema-instance" xsi:schemaLocation="https://api.geni.skat.dk/begrebsmodel/2012/01/01/ file:/Users/mortensoby/work/skat/source/rente/src/main/resources/xsd/rente_schemas/xml/skat2016/view/RenteIndberetningUdlaanStrukturType.xsd"&gt;
+  &lt;Indkomstperiode&gt;
+    &lt;IndkomstÅr&gt;2017&lt;/IndkomstÅr&gt;
+  &lt;/Indkomstperiode&gt;
+  &lt;Indberetningspligtig&gt;
+    &lt;VirksomhedSENummer&gt;61126228&lt;/VirksomhedSENummer&gt;
+  &lt;/Indberetningspligtig&gt;
+  &lt;KontoID&gt;92458351&lt;/KontoID&gt;
+  &lt;IndberetningValg&gt;
     &lt;RetbarUdlånKontoOplysninger&gt;
-        &lt;IndberetningIdentifikatorStruktur&gt;
-            &lt;IndberetningForm&gt;1&lt;/IndberetningForm&gt;
-            &lt;IndberetningID&gt;IndberetningID0&lt;/IndberetningID&gt;
-            &lt;RettelseID&gt;
-                &lt;IndberetningID&gt;IndberetningID1&lt;/IndberetningID&gt;
-            &lt;/RettelseID&gt;
-        &lt;/IndberetningIdentifikatorStruktur&gt;
-        &lt;IndberetningReferenceNummer&gt;IndberetningReferenceNummer0&lt;/IndberetningReferenceNummer&gt;
-        &lt;KontoDetaljer&gt;
-            &lt;Pengeinstitut&gt;
-                &lt;BankRegisteringsnummer&gt;0000&lt;/BankRegisteringsnummer&gt;
-                &lt;BankKontoIBANNummer&gt;BankKontoIBANNummer0&lt;/BankKontoIBANNummer&gt;
-            &lt;/Pengeinstitut&gt;
-            &lt;UdlånKontoNummer&gt;UdlånKontoNumme&lt;/UdlånKontoNummer&gt;
-            &lt;KontoTypeKode&gt;KontoTypeK&lt;/KontoTypeKode&gt;
-            &lt;KontoStartDato&gt;2006-05-04&lt;/KontoStartDato&gt;
-            &lt;KontoOphørDato&gt;2006-05-04&lt;/KontoOphørDato&gt;
-            &lt;ValutaStatusKode&gt;V&lt;/ValutaStatusKode&gt;
-        &lt;/KontoDetaljer&gt;
-        &lt;Beløb&gt;
-            &lt;RenteBeløb&gt;0.00&lt;/RenteBeløb&gt;
-            &lt;LånRestgældBeløb&gt;0.00&lt;/LånRestgældBeløb&gt;
-            &lt;LånKursværdi&gt;-1073741773.00&lt;/LånKursværdi&gt;
-            &lt;LånForholdGældTilstand&gt;L&lt;/LånForholdGældTilstand&gt;
-        &lt;/Beløb&gt;
-        &lt;KontohaverListeStruktur&gt;
-            &lt;KontoEjerstatusAntalKontohavere&gt;En&lt;/KontoEjerstatusAntalKontohavere&gt;
-            &lt;KontohaverIndkomstPeriodeValg&gt;
-                &lt;IndberetningÅrsUltimoKontohaverListe&gt;
-                    &lt;KontohaverValg&gt;
-                        &lt;IndlændingValg&gt;
-                            &lt;VirksomhedSENummer&gt;40004000&lt;/VirksomhedSENummer&gt;
-                        &lt;/IndlændingValg&gt;
-                    &lt;/KontohaverValg&gt;
-                    &lt;KontohaverValg&gt;
-                        &lt;IndlændingValg&gt;
-                            &lt;VirksomhedSENummer&gt;40004000&lt;/VirksomhedSENummer&gt;
-                        &lt;/IndlændingValg&gt;
-                    &lt;/KontohaverValg&gt;
-                &lt;/IndberetningÅrsUltimoKontohaverListe&gt;
-            &lt;/KontohaverIndkomstPeriodeValg&gt;
-        &lt;/KontohaverListeStruktur&gt;
+      &lt;IndberetningIdentifikatorStruktur&gt;
+        &lt;IndberetningForm&gt;1&lt;/IndberetningForm&gt;
+        &lt;IndberetningID&gt;5e0d450e-0b97-4989-8492-5007914db399&lt;/IndberetningID&gt;
+        &lt;RettelseID&gt;
+          &lt;IndberetningID/&gt;
+        &lt;/RettelseID&gt;
+      &lt;/IndberetningIdentifikatorStruktur&gt;
+      &lt;NoteTekst&gt;StEqRRJHRF&lt;/NoteTekst&gt;
+      &lt;KontoDetaljer&gt;
+        &lt;Pengeinstitut&gt;
+          &lt;BankRegisteringsnummer&gt;1234&lt;/BankRegisteringsnummer&gt;
+          &lt;BankKontoIBANNummer&gt;BankKontoIBANNummer0&lt;/BankKontoIBANNummer&gt;
+        &lt;/Pengeinstitut&gt;
+        &lt;UdlånKontoNummer&gt;UdlånKontoNumme&lt;/UdlånKontoNummer&gt;
+        &lt;KontoTypeKode&gt;KontoTypeK&lt;/KontoTypeKode&gt;
+        &lt;LånForholdRestanceMarkering&gt;false&lt;/LånForholdRestanceMarkering&gt;
+        &lt;LånForholdGældEftergivelseKode&gt;L&lt;/LånForholdGældEftergivelseKode&gt;
+        &lt;KontoStartDato&gt;2006-05-04&lt;/KontoStartDato&gt;
+        &lt;RenteValutaStatusKode&gt;R&lt;/RenteValutaStatusKode&gt;
+      &lt;/KontoDetaljer&gt;
+      &lt;Beløb&gt;
+        &lt;RenteBeløb&gt;1000.00&lt;/RenteBeløb&gt;
+        &lt;LånRestgældBeløb&gt;250000.80&lt;/LånRestgældBeløb&gt;
+        &lt;LånKursværdi&gt;300000.00&lt;/LånKursværdi&gt;
+      &lt;/Beløb&gt;
+      &lt;KontohaverIndkomstperiodeValg&gt;
+        &lt;KontohaverListeÅrsUltimoStruktur&gt;
+          &lt;KontohaverPeriodeListe&gt;
+            &lt;KontohaverPeriode&gt;
+              &lt;RenteBeløb&gt;1000.00&lt;/RenteBeløb&gt;
+              &lt;EjerskifteOphørDato&gt;2017-11-15Z&lt;/EjerskifteOphørDato&gt;
+              &lt;KontoEjerstatusAntalKontohavere&gt;En&lt;/KontoEjerstatusAntalKontohavere&gt;
+              &lt;KontohaverListe&gt;
+                &lt;KontohaverOplysninger&gt;
+                  &lt;KontohaverValg&gt;
+                    &lt;IndlændingValg&gt;
+                      &lt;PersonValg&gt;
+                        &lt;PersonCPRNummer&gt;1505701949&lt;/PersonCPRNummer&gt;
+                      &lt;/PersonValg&gt;
+                    &lt;/IndlændingValg&gt;
+                  &lt;/KontohaverValg&gt;
+                &lt;/KontohaverOplysninger&gt;
+              &lt;/KontohaverListe&gt;
+            &lt;/KontohaverPeriode&gt;
+          &lt;/KontohaverPeriodeListe&gt;
+        &lt;/KontohaverListeÅrsUltimoStruktur&gt;
+      &lt;/KontohaverIndkomstperiodeValg&gt;
     &lt;/RetbarUdlånKontoOplysninger&gt;
+  &lt;/IndberetningValg&gt;
 &lt;/RenteIndberetningUdlånStruktur&gt;
 '</code></pre>
 </div>
@@ -673,63 +678,67 @@ kontoid, periode og pligtigs SE-nummer.</p>
 <pre class="highlightjs highlight nowrap"><code class="language-http" data-lang="http">POST /udl%C3%A5n/pligtige/61126228/perioder/2017/konti/1234/indleveringer HTTP/1.1
 Content-Type: application/xml;charset=UTF-8
 Host: api.geni.skat.dk
-Content-Length: 2840
+Content-Length: 2821
 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;RenteIndberetningUdlånStruktur xmlns="https://api.geni.skat.dk/begrebsmodel/2012/01/01/"
-                                xmlns:xsi="https://api.geni.skat.dk/2001/XMLSchema-instance"
-                                xsi:schemaLocation="https://api.geni.skat.dk/begrebsmodel/2012/01/01/ file:/Users/johnsen/git/skat/rente/src/main/resources/xsd/rente_schemas/xml/skat2012/view/RenteIndberetningUdlaanStrukturType.xsd"&gt;
-    &lt;Indkomstperiode&gt;
-        &lt;IndkomstÅr&gt;2017&lt;/IndkomstÅr&gt;
-    &lt;/Indkomstperiode&gt;
-    &lt;Indberetningspligtig&gt;
-        &lt;VirksomhedSENummer&gt;61126228&lt;/VirksomhedSENummer&gt;
-    &lt;/Indberetningspligtig&gt;
-    &lt;KontoID&gt;1234&lt;/KontoID&gt;
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;RenteIndberetningUdlånStruktur xmlns="https://api.geni.skat.dk/begrebsmodel/2012/01/01/" xmlns:xsi="https://api.geni.skat.dk/2001/XMLSchema-instance" xsi:schemaLocation="https://api.geni.skat.dk/begrebsmodel/2012/01/01/ file:/Users/mortensoby/work/skat/source/rente/src/main/resources/xsd/rente_schemas/xml/skat2016/view/RenteIndberetningUdlaanStrukturType.xsd"&gt;
+  &lt;Indkomstperiode&gt;
+    &lt;IndkomstÅr&gt;2017&lt;/IndkomstÅr&gt;
+  &lt;/Indkomstperiode&gt;
+  &lt;Indberetningspligtig&gt;
+    &lt;VirksomhedSENummer&gt;61126228&lt;/VirksomhedSENummer&gt;
+  &lt;/Indberetningspligtig&gt;
+  &lt;KontoID&gt;92458351&lt;/KontoID&gt;
+  &lt;IndberetningValg&gt;
     &lt;RetbarUdlånKontoOplysninger&gt;
-        &lt;IndberetningIdentifikatorStruktur&gt;
-            &lt;IndberetningForm&gt;1&lt;/IndberetningForm&gt;
-            &lt;IndberetningID&gt;IndberetningID0&lt;/IndberetningID&gt;
-            &lt;RettelseID&gt;
-                &lt;IndberetningID&gt;IndberetningID1&lt;/IndberetningID&gt;
-            &lt;/RettelseID&gt;
-        &lt;/IndberetningIdentifikatorStruktur&gt;
-        &lt;IndberetningReferenceNummer&gt;IndberetningReferenceNummer0&lt;/IndberetningReferenceNummer&gt;
-        &lt;KontoDetaljer&gt;
-            &lt;Pengeinstitut&gt;
-                &lt;BankRegisteringsnummer&gt;0000&lt;/BankRegisteringsnummer&gt;
-                &lt;BankKontoIBANNummer&gt;BankKontoIBANNummer0&lt;/BankKontoIBANNummer&gt;
-            &lt;/Pengeinstitut&gt;
-            &lt;UdlånKontoNummer&gt;UdlånKontoNumme&lt;/UdlånKontoNummer&gt;
-            &lt;KontoTypeKode&gt;KontoTypeK&lt;/KontoTypeKode&gt;
-            &lt;KontoStartDato&gt;2006-05-04&lt;/KontoStartDato&gt;
-            &lt;KontoOphørDato&gt;2006-05-04&lt;/KontoOphørDato&gt;
-            &lt;ValutaStatusKode&gt;V&lt;/ValutaStatusKode&gt;
-        &lt;/KontoDetaljer&gt;
-        &lt;Beløb&gt;
-            &lt;RenteBeløb&gt;0.00&lt;/RenteBeløb&gt;
-            &lt;LånRestgældBeløb&gt;0.00&lt;/LånRestgældBeløb&gt;
-            &lt;LånKursværdi&gt;-1073741773.00&lt;/LånKursværdi&gt;
-            &lt;LånForholdGældTilstand&gt;L&lt;/LånForholdGældTilstand&gt;
-        &lt;/Beløb&gt;
-        &lt;KontohaverListeStruktur&gt;
-            &lt;KontoEjerstatusAntalKontohavere&gt;En&lt;/KontoEjerstatusAntalKontohavere&gt;
-            &lt;KontohaverIndkomstPeriodeValg&gt;
-                &lt;IndberetningÅrsUltimoKontohaverListe&gt;
-                    &lt;KontohaverValg&gt;
-                        &lt;IndlændingValg&gt;
-                            &lt;VirksomhedSENummer&gt;40004000&lt;/VirksomhedSENummer&gt;
-                        &lt;/IndlændingValg&gt;
-                    &lt;/KontohaverValg&gt;
-                    &lt;KontohaverValg&gt;
-                        &lt;IndlændingValg&gt;
-                            &lt;VirksomhedSENummer&gt;40004000&lt;/VirksomhedSENummer&gt;
-                        &lt;/IndlændingValg&gt;
-                    &lt;/KontohaverValg&gt;
-                &lt;/IndberetningÅrsUltimoKontohaverListe&gt;
-            &lt;/KontohaverIndkomstPeriodeValg&gt;
-        &lt;/KontohaverListeStruktur&gt;
+      &lt;IndberetningIdentifikatorStruktur&gt;
+        &lt;IndberetningForm&gt;1&lt;/IndberetningForm&gt;
+        &lt;IndberetningID&gt;5e0d450e-0b97-4989-8492-5007914db399&lt;/IndberetningID&gt;
+        &lt;RettelseID&gt;
+          &lt;IndberetningID/&gt;
+        &lt;/RettelseID&gt;
+      &lt;/IndberetningIdentifikatorStruktur&gt;
+      &lt;NoteTekst&gt;StEqRRJHRF&lt;/NoteTekst&gt;
+      &lt;KontoDetaljer&gt;
+        &lt;Pengeinstitut&gt;
+          &lt;BankRegisteringsnummer&gt;1234&lt;/BankRegisteringsnummer&gt;
+          &lt;BankKontoIBANNummer&gt;BankKontoIBANNummer0&lt;/BankKontoIBANNummer&gt;
+        &lt;/Pengeinstitut&gt;
+        &lt;UdlånKontoNummer&gt;UdlånKontoNumme&lt;/UdlånKontoNummer&gt;
+        &lt;KontoTypeKode&gt;KontoTypeK&lt;/KontoTypeKode&gt;
+        &lt;LånForholdRestanceMarkering&gt;false&lt;/LånForholdRestanceMarkering&gt;
+        &lt;LånForholdGældEftergivelseKode&gt;L&lt;/LånForholdGældEftergivelseKode&gt;
+        &lt;KontoStartDato&gt;2006-05-04&lt;/KontoStartDato&gt;
+        &lt;RenteValutaStatusKode&gt;R&lt;/RenteValutaStatusKode&gt;
+      &lt;/KontoDetaljer&gt;
+      &lt;Beløb&gt;
+        &lt;RenteBeløb&gt;1000.00&lt;/RenteBeløb&gt;
+        &lt;LånRestgældBeløb&gt;250000.80&lt;/LånRestgældBeløb&gt;
+        &lt;LånKursværdi&gt;300000.00&lt;/LånKursværdi&gt;
+      &lt;/Beløb&gt;
+      &lt;KontohaverIndkomstperiodeValg&gt;
+        &lt;KontohaverListeÅrsUltimoStruktur&gt;
+          &lt;KontohaverPeriodeListe&gt;
+            &lt;KontohaverPeriode&gt;
+              &lt;RenteBeløb&gt;1000.00&lt;/RenteBeløb&gt;
+              &lt;EjerskifteOphørDato&gt;2017-11-15Z&lt;/EjerskifteOphørDato&gt;
+              &lt;KontoEjerstatusAntalKontohavere&gt;En&lt;/KontoEjerstatusAntalKontohavere&gt;
+              &lt;KontohaverListe&gt;
+                &lt;KontohaverOplysninger&gt;
+                  &lt;KontohaverValg&gt;
+                    &lt;IndlændingValg&gt;
+                      &lt;PersonValg&gt;
+                        &lt;PersonCPRNummer&gt;1505701949&lt;/PersonCPRNummer&gt;
+                      &lt;/PersonValg&gt;
+                    &lt;/IndlændingValg&gt;
+                  &lt;/KontohaverValg&gt;
+                &lt;/KontohaverOplysninger&gt;
+              &lt;/KontohaverListe&gt;
+            &lt;/KontohaverPeriode&gt;
+          &lt;/KontohaverPeriodeListe&gt;
+        &lt;/KontohaverListeÅrsUltimoStruktur&gt;
+      &lt;/KontohaverIndkomstperiodeValg&gt;
     &lt;/RetbarUdlånKontoOplysninger&gt;
+  &lt;/IndberetningValg&gt;
 &lt;/RenteIndberetningUdlånStruktur&gt;</code></pre>
 </div>
 </div>
@@ -769,7 +778,7 @@ Content-Length: 2840
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.attributes.status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Valideringsstatus, kan være TEKNISK_IKKE_VALID, FORRETNINGSMAESSIG_IKKE_VALID eller VALID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valideringsstatus, kan være FIL_IKKE_GENKENDT_SOM_XML, FEJL_VED_XML_VALIDERING, FEJL_I_IKKE_RETBARE_FELTER, RETTELSESPRINCIP_IKKE_OVERHOLDT, FORRETNINGSMAESSIG_IKKE_VALID eller VALID</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.attributes.beskeder</code></p></td>
@@ -800,8 +809,8 @@ Transfer-Encoding: chunked
     "id" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/3",
     "type" : "indlevering-status",
     "attributes" : {
-      "status" : "VALID",
-      "beskeder" : [ ]
+      "status" : "FEJL_I_IKKE_RETBARE_FELTER",
+      "beskeder" : [ "FEJL FEJL_I_IKKE_RETBARE_FELTER: Værdien af '/RenteIndberetningUdlånStruktur/KontoID' skal være 1234" ]
     },
     "links" : {
       "indlevering" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/3"
@@ -860,8 +869,8 @@ Transfer-Encoding: chunked
     "id" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/4",
     "type" : "indlevering-status",
     "attributes" : {
-      "status" : "TEKNISK_IKKE_VALID",
-      "beskeder" : [ "Den indleverede fil er ikke i XML-format. Det skal den være!" ]
+      "status" : "FEJL_VED_XML_VALIDERING",
+      "beskeder" : [ "FEJL 0086" ]
     },
     "links" : {
       "indlevering" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/4"
@@ -930,7 +939,7 @@ Transfer-Encoding: chunked
 <h5 id="_curl_3"><a class="link" href="#_curl_3">curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.geni.skat.dk/udl%C3%A5n/pligtige/61126228/perioder/2017/konti/1234' -i</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.geni.skat.dk/udl%C3%A5n/pligtige/61126228/perioder/2017/konti/44415162' -i</code></pre>
 </div>
 </div>
 </div>
@@ -938,7 +947,7 @@ Transfer-Encoding: chunked
 <h5 id="_http_3"><a class="link" href="#_http_3">HTTP</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http" data-lang="http">GET /udl%C3%A5n/pligtige/61126228/perioder/2017/konti/1234 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http" data-lang="http">GET /udl%C3%A5n/pligtige/61126228/perioder/2017/konti/44415162 HTTP/1.1
 Host: api.geni.skat.dk</code></pre>
 </div>
 </div>
@@ -973,12 +982,17 @@ Host: api.geni.skat.dk</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.attributes.status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Valideringsstatus, kan være TEKNISK_IKKE_VALID, FORRETNINGSMAESSIG_IKKE_VALID eller VALID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valideringsstatus, kan være FIL_IKKE_GENKENDT_SOM_XML, FEJL_VED_XML_VALIDERING, FEJL_I_IKKE_RETBARE_FELTER, RETTELSESPRINCIP_IKKE_OVERHOLDT, FORRETNINGSMAESSIG_IKKE_VALID eller VALID</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.links.indlevering</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.links.senesteIndlevering</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Link til indleveringen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seneste indlevering, ikke nødvendigvis den gældende</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.links.gældendeIndberetning</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gældende indberetning</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.links.status</code></p></td>
@@ -999,25 +1013,26 @@ Host: api.geni.skat.dk</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Access-Control-Expose-Headers: origin, authorization, accept, content-type, x-requested-with, x-amz-version-id, ETag, Content-MD5, Location, Set-Cookie, X-Application-Context, Access-Control-Allow-Origin, Access-Control-Allow-Credentials,
-Location: /udl%C3%A5n/pligtige/61126228/perioder/2017/konti/1234
+Location: /udl%C3%A5n/pligtige/61126228/perioder/2017/konti/44415162
 Content-Type: application/vnd.api+json;charset=UTF-8
 Content-Language: da-DA
 Transfer-Encoding: chunked
 
 {
   "data" : {
-    "id" : "/udlån/pligtige/61126228/perioder/2017/konti/1234",
+    "id" : "/udlån/pligtige/61126228/perioder/2017/konti/44415162",
     "type" : "konto",
     "attributes" : {
       "status" : "VALID"
     },
     "links" : {
-      "indlevering" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/3",
-      "status" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/3/status"
+      "senesteIndlevering" : "/udlån/pligtige/61126228/perioder/2017/konti/44415162/indleveringer/1",
+      "gældendeIndberetning" : "/udlån/pligtige/61126228/perioder/2017/konti/44415162/indleveringer/1",
+      "status" : "/udlån/pligtige/61126228/perioder/2017/konti/44415162/indleveringer/1/status"
     }
   },
   "links" : {
-    "self" : "/udlån/pligtige/61126228/perioder/2017/konti/1234"
+    "self" : "/udlån/pligtige/61126228/perioder/2017/konti/44415162"
   }
 }</code></pre>
 </div>
@@ -1096,58 +1111,65 @@ Content-Type: application/xml
 Transfer-Encoding: chunked
 
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;RenteIndberetningUdlånStruktur xmlns="http://skat.dk/begrebsmodel/2012/01/01/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://skat.dk/begrebsmodel/2012/01/01/ file:/Users/johnsen/git/skat/rente/src/main/resources/xsd/rente_schemas/xml/skat2012/view/RenteIndberetningUdlaanStrukturType.xsd"&gt;
-    &lt;Indkomstperiode&gt;
-        &lt;IndkomstÅr&gt;2017&lt;/IndkomstÅr&gt;
-    &lt;/Indkomstperiode&gt;
-    &lt;Indberetningspligtig&gt;
-        &lt;VirksomhedSENummer&gt;61126228&lt;/VirksomhedSENummer&gt;
-    &lt;/Indberetningspligtig&gt;
-    &lt;KontoID&gt;1234&lt;/KontoID&gt;
+&lt;RenteIndberetningUdlånStruktur xmlns="http://skat.dk/begrebsmodel/2012/01/01/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://skat.dk/begrebsmodel/2012/01/01/ file:/Users/mortensoby/work/skat/source/rente/src/main/resources/xsd/rente_schemas/xml/skat2016/view/RenteIndberetningUdlaanStrukturType.xsd"&gt;
+  &lt;Indkomstperiode&gt;
+    &lt;IndkomstÅr&gt;2017&lt;/IndkomstÅr&gt;
+  &lt;/Indkomstperiode&gt;
+  &lt;Indberetningspligtig&gt;
+    &lt;VirksomhedSENummer&gt;61126228&lt;/VirksomhedSENummer&gt;
+  &lt;/Indberetningspligtig&gt;
+  &lt;KontoID&gt;17521038&lt;/KontoID&gt;
+  &lt;IndberetningValg&gt;
     &lt;RetbarUdlånKontoOplysninger&gt;
-        &lt;IndberetningIdentifikatorStruktur&gt;
-            &lt;IndberetningForm&gt;1&lt;/IndberetningForm&gt;
-            &lt;IndberetningID&gt;IndberetningID0&lt;/IndberetningID&gt;
-            &lt;RettelseID&gt;
-                &lt;IndberetningID&gt;IndberetningID1&lt;/IndberetningID&gt;
-            &lt;/RettelseID&gt;
-        &lt;/IndberetningIdentifikatorStruktur&gt;
-        &lt;IndberetningReferenceNummer&gt;IndberetningReferenceNummer0&lt;/IndberetningReferenceNummer&gt;
-        &lt;KontoDetaljer&gt;
-            &lt;Pengeinstitut&gt;
-                &lt;BankRegisteringsnummer&gt;0000&lt;/BankRegisteringsnummer&gt;
-                &lt;BankKontoIBANNummer&gt;BankKontoIBANNummer0&lt;/BankKontoIBANNummer&gt;
-            &lt;/Pengeinstitut&gt;
-            &lt;UdlånKontoNummer&gt;UdlånKontoNumme&lt;/UdlånKontoNummer&gt;
-            &lt;KontoTypeKode&gt;KontoTypeK&lt;/KontoTypeKode&gt;
-            &lt;KontoStartDato&gt;2006-05-04&lt;/KontoStartDato&gt;
-            &lt;KontoOphørDato&gt;2006-05-04&lt;/KontoOphørDato&gt;
-            &lt;ValutaStatusKode&gt;V&lt;/ValutaStatusKode&gt;
-        &lt;/KontoDetaljer&gt;
-        &lt;Beløb&gt;
-            &lt;RenteBeløb&gt;0.00&lt;/RenteBeløb&gt;
-            &lt;LånRestgældBeløb&gt;0.00&lt;/LånRestgældBeløb&gt;
-            &lt;LånKursværdi&gt;-1073741773.00&lt;/LånKursværdi&gt;
-            &lt;LånForholdGældTilstand&gt;L&lt;/LånForholdGældTilstand&gt;
-        &lt;/Beløb&gt;
-        &lt;KontohaverListeStruktur&gt;
-            &lt;KontoEjerstatusAntalKontohavere&gt;En&lt;/KontoEjerstatusAntalKontohavere&gt;
-            &lt;KontohaverIndkomstPeriodeValg&gt;
-                &lt;IndberetningÅrsUltimoKontohaverListe&gt;
-                    &lt;KontohaverValg&gt;
-                        &lt;IndlændingValg&gt;
-                            &lt;VirksomhedSENummer&gt;40004000&lt;/VirksomhedSENummer&gt;
-                        &lt;/IndlændingValg&gt;
-                    &lt;/KontohaverValg&gt;
-                    &lt;KontohaverValg&gt;
-                        &lt;IndlændingValg&gt;
-                            &lt;VirksomhedSENummer&gt;40004000&lt;/VirksomhedSENummer&gt;
-                        &lt;/IndlændingValg&gt;
-                    &lt;/KontohaverValg&gt;
-                &lt;/IndberetningÅrsUltimoKontohaverListe&gt;
-            &lt;/KontohaverIndkomstPeriodeValg&gt;
-        &lt;/KontohaverListeStruktur&gt;
+      &lt;IndberetningIdentifikatorStruktur&gt;
+        &lt;IndberetningForm&gt;1&lt;/IndberetningForm&gt;
+        &lt;IndberetningID&gt;0709297e-5b60-4133-b3c8-7605efef1f13&lt;/IndberetningID&gt;
+        &lt;RettelseID&gt;
+          &lt;IndberetningID/&gt;
+        &lt;/RettelseID&gt;
+      &lt;/IndberetningIdentifikatorStruktur&gt;
+      &lt;NoteTekst&gt;NgMxkCYIHi&lt;/NoteTekst&gt;
+      &lt;KontoDetaljer&gt;
+        &lt;Pengeinstitut&gt;
+          &lt;BankRegisteringsnummer&gt;1234&lt;/BankRegisteringsnummer&gt;
+          &lt;BankKontoIBANNummer&gt;BankKontoIBANNummer0&lt;/BankKontoIBANNummer&gt;
+        &lt;/Pengeinstitut&gt;
+        &lt;UdlånKontoNummer&gt;UdlånKontoNumme&lt;/UdlånKontoNummer&gt;
+        &lt;KontoTypeKode&gt;KontoTypeK&lt;/KontoTypeKode&gt;
+        &lt;LånForholdRestanceMarkering&gt;false&lt;/LånForholdRestanceMarkering&gt;
+        &lt;LånForholdGældEftergivelseKode&gt;L&lt;/LånForholdGældEftergivelseKode&gt;
+        &lt;KontoStartDato&gt;2006-05-04&lt;/KontoStartDato&gt;
+        &lt;RenteValutaStatusKode&gt;R&lt;/RenteValutaStatusKode&gt;
+      &lt;/KontoDetaljer&gt;
+      &lt;Beløb&gt;
+        &lt;RenteBeløb&gt;1000.00&lt;/RenteBeløb&gt;
+        &lt;LånRestgældBeløb&gt;250000.80&lt;/LånRestgældBeløb&gt;
+        &lt;LånKursværdi&gt;300000.00&lt;/LånKursværdi&gt;
+      &lt;/Beløb&gt;
+      &lt;KontohaverIndkomstperiodeValg&gt;
+        &lt;KontohaverListeÅrsUltimoStruktur&gt;
+          &lt;KontohaverPeriodeListe&gt;
+            &lt;KontohaverPeriode&gt;
+              &lt;RenteBeløb&gt;1000.00&lt;/RenteBeløb&gt;
+              &lt;EjerskifteOphørDato&gt;2017-11-15Z&lt;/EjerskifteOphørDato&gt;
+              &lt;KontoEjerstatusAntalKontohavere&gt;En&lt;/KontoEjerstatusAntalKontohavere&gt;
+              &lt;KontohaverListe&gt;
+                &lt;KontohaverOplysninger&gt;
+                  &lt;KontohaverValg&gt;
+                    &lt;IndlændingValg&gt;
+                      &lt;PersonValg&gt;
+                        &lt;PersonCPRNummer&gt;1505701949&lt;/PersonCPRNummer&gt;
+                      &lt;/PersonValg&gt;
+                    &lt;/IndlændingValg&gt;
+                  &lt;/KontohaverValg&gt;
+                &lt;/KontohaverOplysninger&gt;
+              &lt;/KontohaverListe&gt;
+            &lt;/KontohaverPeriode&gt;
+          &lt;/KontohaverPeriodeListe&gt;
+        &lt;/KontohaverListeÅrsUltimoStruktur&gt;
+      &lt;/KontohaverIndkomstperiodeValg&gt;
     &lt;/RetbarUdlånKontoOplysninger&gt;
+  &lt;/IndberetningValg&gt;
 &lt;/RenteIndberetningUdlånStruktur&gt;</code></pre>
 </div>
 </div>
@@ -1242,7 +1264,7 @@ Host: api.geni.skat.dk</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.attributes.status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Valideringsstatus, kan være TEKNISK_IKKE_VALID, FORRETNINGSMAESSIG_IKKE_VALID eller VALID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valideringsstatus, kan være FIL_IKKE_GENKENDT_SOM_XML, FEJL_VED_XML_VALIDERING, FEJL_I_IKKE_RETBARE_FELTER, RETTELSESPRINCIP_IKKE_OVERHOLDT, FORRETNINGSMAESSIG_IKKE_VALID eller VALID</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.attributes.beskeder</code></p></td>
@@ -1273,8 +1295,8 @@ Transfer-Encoding: chunked
     "id" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/1",
     "type" : "indlevering-status",
     "attributes" : {
-      "status" : "VALID",
-      "beskeder" : [ ]
+      "status" : "FEJL_I_IKKE_RETBARE_FELTER",
+      "beskeder" : [ "FEJL FEJL_I_IKKE_RETBARE_FELTER: Værdien af '/RenteIndberetningUdlånStruktur/KontoID' skal være 1234" ]
     },
     "links" : {
       "indlevering" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/1"
@@ -1382,7 +1404,7 @@ Host: api.geni.skat.dk</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].attributes.status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Valideringsstatus, kan være TEKNISK_IKKE_VALID, FORRETNINGSMAESSIG_IKKE_VALID eller VALID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valideringsstatus, kan være FIL_IKKE_GENKENDT_SOM_XML, FEJL_VED_XML_VALIDERING, FEJL_I_IKKE_RETBARE_FELTER, RETTELSESPRINCIP_IKKE_OVERHOLDT, FORRETNINGSMAESSIG_IKKE_VALID eller VALID</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].links.indlevering</code></p></td>
@@ -1417,8 +1439,8 @@ Transfer-Encoding: chunked
     "id" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/1",
     "type" : "indlevering",
     "attributes" : {
-      "dato" : "2016-09-28T13:30:03+0000",
-      "status" : "VALID"
+      "dato" : "2016-11-29T11:44:35+0000",
+      "status" : "FEJL_I_IKKE_RETBARE_FELTER"
     },
     "links" : {
       "indlevering" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/1",
@@ -1428,8 +1450,8 @@ Transfer-Encoding: chunked
     "id" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/2",
     "type" : "indlevering",
     "attributes" : {
-      "dato" : "2016-09-28T13:30:04+0000",
-      "status" : "VALID"
+      "dato" : "2016-11-29T11:44:35+0000",
+      "status" : "FEJL_I_IKKE_RETBARE_FELTER"
     },
     "links" : {
       "indlevering" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/2",
@@ -1439,8 +1461,8 @@ Transfer-Encoding: chunked
     "id" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/3",
     "type" : "indlevering",
     "attributes" : {
-      "dato" : "2016-09-28T13:30:05+0000",
-      "status" : "VALID"
+      "dato" : "2016-11-29T11:44:36+0000",
+      "status" : "FEJL_I_IKKE_RETBARE_FELTER"
     },
     "links" : {
       "indlevering" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/3",
@@ -1450,8 +1472,8 @@ Transfer-Encoding: chunked
     "id" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/4",
     "type" : "indlevering",
     "attributes" : {
-      "dato" : "2016-09-28T13:30:05+0000",
-      "status" : "TEKNISK_IKKE_VALID"
+      "dato" : "2016-11-29T11:44:36+0000",
+      "status" : "FEJL_VED_XML_VALIDERING"
     },
     "links" : {
       "indlevering" : "/udlån/pligtige/61126228/perioder/2017/konti/1234/indleveringer/4",
@@ -1524,7 +1546,7 @@ Masseindlevering kræver at der først er blevet uploadet en fil i eKapitals S3-
 <h5 id="_curl_7"><a class="link" href="#_curl_7">curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.geni.skat.dk/udl%C3%A5n/pligtige/61126229/perioder/2017/masseindleveringer' -i -X POST -H 'Content-Type: application/xml;charset=UTF-8' -d '{"data":{"attributes":{"s3Key":"https://api.geni.skat.dk/udl\u00e5n/pligtige/61126229/input_file_id","s3Md5Checksum":"TBY7IQZMfp6PHYoFQ01VQQ=="}}}'</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.geni.skat.dk/udl%C3%A5n/pligtige/61126229/perioder/2017/masseindleveringer' -i -X POST -H 'Content-Type: application/xml;charset=UTF-8' -d '{"data":{"attributes":{"s3Key":"https://api.geni.skat.dk/udl\u00e5n/pligtige/61126229/input_file_id","s3Md5Checksum":"u9yTuIm1Xg9P7HNiUoyO7g=="}}}'</code></pre>
 </div>
 </div>
 </div>
@@ -1537,7 +1559,7 @@ Content-Type: application/xml;charset=UTF-8
 Host: api.geni.skat.dk
 Content-Length: 146
 
-{"data":{"attributes":{"s3Key":"https://api.geni.skat.dk/udl\u00e5n/pligtige/61126229/input_file_id","s3Md5Checksum":"TBY7IQZMfp6PHYoFQ01VQQ=="}}}</code></pre>
+{"data":{"attributes":{"s3Key":"https://api.geni.skat.dk/udl\u00e5n/pligtige/61126229/input_file_id","s3Md5Checksum":"u9yTuIm1Xg9P7HNiUoyO7g=="}}}</code></pre>
 </div>
 </div>
 </div>
@@ -1597,14 +1619,14 @@ Content-Length: 146
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 201 Created
 Access-Control-Expose-Headers: origin, authorization, accept, content-type, x-requested-with, x-amz-version-id, ETag, Content-MD5, Location, Set-Cookie, X-Application-Context, Access-Control-Allow-Origin, Access-Control-Allow-Credentials,
-Location: /udlån/pligtige/61126229/perioder/2017/masseindleveringer/fc9f40c4-3eab-4119-932f-92addadd8d55
+Location: /udlån/pligtige/61126229/perioder/2017/masseindleveringer/1
 Content-Type: application/vnd.api+json;charset=UTF-8
 Content-Language: da-DA
 Transfer-Encoding: chunked
 
 {
   "data" : {
-    "id" : "/udlån/pligtige/61126229/perioder/2017/masseindleveringer/fc9f40c4-3eab-4119-932f-92addadd8d55",
+    "id" : "/udlån/pligtige/61126229/perioder/2017/masseindleveringer/1",
     "type" : "masseindlevering-status",
     "attributes" : {
       "status" : "AFSLUTTET"
@@ -1615,7 +1637,189 @@ Transfer-Encoding: chunked
     }
   },
   "links" : {
-    "self" : "/udlån/pligtige/61126229/perioder/2017/masseindleveringer/fc9f40c4-3eab-4119-932f-92addadd8d55"
+    "self" : "/udlån/pligtige/61126229/perioder/2017/masseindleveringer/1"
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_status_på_masseindlevering"><a class="link" href="#_status_på_masseindlevering">Status på masseindlevering</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Statuskode</th>
+<th class="tableblock halign-left valign-top">Brug</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>200 OK</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Masseindleveringen findes og brugeren har adgang til at se den.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>401 Unauthorized</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brugeren har ikke angivet credentials</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>403 Forbidden</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brugeren har ikke læseadgang</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>404 Not Found</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Masseindleveringen findes ikke.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_eksempel_request_8"><a class="link" href="#_eksempel_request_8">Eksempel-request</a></h4>
+<div class="sect4">
+<h5 id="_curl_8"><a class="link" href="#_curl_8">curl</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.geni.skat.dk/udl%C3%A5n/pligtige/61126229/perioder/2017/masseindleveringer/2' -i -H 'Content-Type: application/xml;charset=UTF-8'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_http_8"><a class="link" href="#_http_8">HTTP</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http" data-lang="http">GET /udl%C3%A5n/pligtige/61126229/perioder/2017/masseindleveringer/2 HTTP/1.1
+Content-Type: application/xml;charset=UTF-8
+Host: api.geni.skat.dk</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_responsstruktur_6"><a class="link" href="#_responsstruktur_6">Responsstruktur</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Id på aktiveringen af masseindleveringen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resursetypen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.attributes.detaljer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Detaljer om indholdet i de enkelte indleveringer i masseindleveringen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.attributes.masseindleveringsid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forløbende sekvens på masseindleveringen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.attributes.rentekategori</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rentekategorien på masseindleveringen. Kan have følgende værdier: udlån, indlån, pantebreve eller prioritetslån</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.attributes.periode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Perioden på masseindleveringen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.links.masseindleveringsfil</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Masseindleveringsfilens placering</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.links.svarfil</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Svarfilens placering</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.attributes.status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Masseindleveringsstatus, kan være IGANG, AFSLUTTET eller FEJLET</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>links.self</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Link der genererede nærværende dokument</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_eksempel_respons_8"><a class="link" href="#_eksempel_respons_8">Eksempel-respons</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Access-Control-Expose-Headers: origin, authorization, accept, content-type, x-requested-with, x-amz-version-id, ETag, Content-MD5, Location, Set-Cookie, X-Application-Context, Access-Control-Allow-Origin, Access-Control-Allow-Credentials,
+Location: /udl%C3%A5n/pligtige/61126229/perioder/2017/masseindleveringer/2
+Content-Type: application/vnd.api+json;charset=UTF-8
+Content-Language: da-DA
+Transfer-Encoding: chunked
+
+{
+  "data" : {
+    "id" : "/udlån/pligtige/61126229/perioder/2017/masseindleveringer/2",
+    "type" : "masseindlevering-status",
+    "attributes" : {
+      "status" : "AFSLUTTET",
+      "masseindleveringsid" : 2,
+      "rentekategori" : "UDLAAN",
+      "periode" : "2017",
+      "detaljer" : {
+        "indberetninger" : {
+          "total" : 4,
+          "godkendte" : 1,
+          "godkendteMedAdvis" : 2,
+          "afviste" : 1
+        },
+        "personer" : {
+          "total" : 100,
+          "indlændinge" : 34,
+          "udlændinge" : 37,
+          "uidentificerede" : 2
+        },
+        "virksomheder" : {
+          "total" : 340,
+          "indlændinge" : 23,
+          "udlændinge" : 25,
+          "uidentificerede" : 3
+        },
+        "beløb" : {
+          "renter" : 30000000,
+          "indestående" : 10000000,
+          "kursværdi" : 100000,
+          "kurstab" : 0
+        }
+      }
+    },
+    "links" : {
+      "masseindleveringsfil" : "http://in.s3.geni.lokal:9000/udlån/pligtige/61126229/input_file_id",
+      "svarfil" : "http://out.s3.geni.lokal:9000/udlån/pligtige/61126229/input_file_id"
+    }
+  },
+  "links" : {
+    "self" : "/udlån/pligtige/61126229/perioder/2017/masseindleveringer/2"
   }
 }</code></pre>
 </div>
@@ -1627,7 +1831,7 @@ Transfer-Encoding: chunked
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-09-28 11:31:39 +02:00
+Last updated 2016-11-16 20:19:27 +01:00
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
